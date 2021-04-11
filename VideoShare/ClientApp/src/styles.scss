@@ -1,0 +1,131 @@
+@import './assets/fonts/noto-sans/noto-sans.css';
+@import '~@angular/material/theming';
+@import 'theme';
+
+@include angular-material-theme($app-theme);
+/* stylelint-disable scss/at-mixin-argumentless-call-parentheses */
+@include mat-core($app-typography);
+
+body {
+  margin: 0;
+  font-family: mat-font-family($app-typography, body-1);
+  font-size: mat-font-size($app-typography, body-1);
+  font-weight: mat-font-weight($app-typography, body-1);
+  color: map-get($app-colors, text);
+  -webkit-text-size-adjust: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: map-get($app-colors, header);
+}
+
+.mat-form-field {
+  @extend %app-wide-element;
+
+  min-width: 10%;
+  line-height: 1.25;
+  padding-bottom: map-get($app-metrics, element-spacing);
+}
+
+.mat-button,
+.mat-raised-button {
+  font-weight: bold;
+}
+
+.mat-raised-button.mat-primary {
+  height: 46px;
+}
+
+.mat-button {
+  color: map-get($mat-primary, main);
+}
+
+mat-card {
+  @extend %app-wide-element;
+
+  text-align: center;
+  box-sizing: border-box;
+  color: map-get($app-colors, text) !important; /* stylelint-disable-line declaration-no-important */
+}
+
+.error-snackbar {
+  background: map-get($mat-warn, main);
+  text-align: center;
+  color: #fff;
+}
+
+.app-title {
+  margin-bottom: map-get($app-metrics, element-spacing) * 2;
+  color: map-get($app-colors, header);
+  font-size: map-get($app-metrics, element-height);
+  font-weight: 300;
+  line-height: map-get($app-metrics, element-height);
+  padding-top: map-get($app-metrics, element-height);
+  text-align: left;
+
+  &.centered {
+    text-align: center;
+  }
+}
+
+.app-sub-title,
+.app-info {
+  font-size: 15px;
+  line-height: 24px;
+}
+
+.app-sub-title {
+  font-weight: bold;
+}
+
+.app-section-title {
+  color: map-get($app-colors, header);
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: -.36px;
+  line-height: map-get($app-metrics, element-height);
+}
+
+.app-info {
+  margin-bottom: map-get($app-metrics, element-spacing);
+}
+
+.app-scan-preview {
+  box-sizing: border-box;
+  height: 191px;
+  border: 2px solid map-get($app-colors, border);
+  border-radius: 6px;
+  margin-bottom: map-get($app-metrics, element-spacing) * 2;
+}
+
+label.mat-form-field-empty {
+  color: #000;
+}
+
+.app-cc-message {
+  font-family: mat-font-family($app-typography);
+  font-size: 13px;
+  display: block;
+  line-height: 1.3em;
+  margin: 1.5em;
+  margin-right: 3em;
+}
+
+.app-cc-close {
+  display: block;
+  position: absolute;
+  right: 15px;
+  top: 40px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  border: none;
+  background-image: url('assets/icons/close.svg');
+  background-repeat: no-repeat;
+  background-size: 20px;
+}

@@ -1,0 +1,25 @@
+@import 'theme';
+
+:host {
+  @extend %app-vertically-centered-content;
+}
+
+mat-icon {
+  width: map-get($app-metrics, element-height) * 4;
+  height: map-get($app-metrics, element-height) * 4;
+}
+
+.mat-icon-restart {
+  width: map-get($app-metrics, element-height) * 2;
+  height: map-get($app-metrics, element-height) * 2;
+}
+
+.restart {
+  margin-bottom: map-get($app-metrics, element-spacing);
+  margin-top: 1vh;
+
+  span {
+    padding-left: map-get($app-metrics, element-spacing);
+    vertical-align: sub;
+  }
+}
