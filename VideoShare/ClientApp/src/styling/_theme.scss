@@ -1,0 +1,86 @@
+@import '~@angular/material/theming';
+
+$app-typography: mat-typography-config(
+  $font-family: '"Noto Sans", sans-serif',
+  $body-1: mat-typography-level(16px, 24px, 500)
+);
+
+$mat-primary: (
+  main: #0070c0,
+  lighter: #b3d4ec,
+  darker: #0053aa,
+  200: #0070c0,
+  contrast : (
+    main: $light-primary-text,
+    lighter: $dark-primary-text,
+    darker: $light-primary-text,
+  )
+);
+
+$theme-primary: mat-palette($mat-primary, main, lighter, darker);
+
+$mat-accent: (
+  main: #058484,
+  lighter: #b4dada,
+  darker: #036767,
+  200: #058484,
+  contrast : (main: $light-primary-text, lighter: $dark-primary-text, darker: $light-primary-text)
+);
+
+$theme-accent: mat-palette($mat-accent, main, lighter, darker);
+$mat-warn: (
+  main: #e11303,
+  lighter: #f6b8b3,
+  darker: #d50b02,
+  200: #e11303,
+  contrast : (
+    main: $light-primary-text,
+    lighter: $dark-primary-text,
+    darker: $light-primary-text,
+  )
+);
+$app-theme-warn: mat-palette($mat-warn, main, lighter, darker);
+
+$app-theme: mat-light-theme($theme-primary, $theme-accent, $app-theme-warn);
+
+$app-metrics: (
+  element-spacing: 10px,
+  element-height: 30px,
+  header-height: 50px,
+  margin: 22px,
+  max-content-width: 768px
+);
+
+$app-colors: (
+  header: #001a6e,
+  sub-header: #465a6a,
+  text: #44546a,
+  border: #adb9ca
+);
+
+%app-icon {
+  width: 100%;
+  height: 100%;
+}
+
+%app-column-layout-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+%app-vertically-centered-content {
+  @extend %app-column-layout-content;
+
+  align-items: center;
+}
+
+%app-wide-element {
+  width: 100%;
+}
+
+%app-header {
+  @extend %app-wide-element;
+
+  background-color: #fff;
+}

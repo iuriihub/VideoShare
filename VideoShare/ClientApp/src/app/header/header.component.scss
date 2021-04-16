@@ -1,0 +1,29 @@
+@import 'theme';
+
+:host {
+  width: 100%;
+}
+
+.container {
+  @extend %app-header;
+
+  height: map-get($app-metrics, header-height);
+
+  .content {
+    display: grid;
+    grid-template-columns: [navigation-container] 22% auto [steps-container] 26%;
+
+    height: 100%;
+    align-items: center;
+
+    button {
+      margin-left: map-get($app-metrics, element-spacing) / 2;
+    }
+
+    .logo {
+      width: 108px;
+      height: 28px;
+      margin: 0 auto;
+    }
+  }
+}

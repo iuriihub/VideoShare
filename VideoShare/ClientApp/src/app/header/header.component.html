@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="content">
+    <div class="navigation-container">
+      <button mat-icon-button (click)="back()" *ngIf="canGoBack$ | async">
+        <mat-icon svgIcon="back"></mat-icon>
+      </button>
+    </div>
+    <mat-icon svgIcon="logo" class="logo"></mat-icon>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<div class="app-title">Video list</div>
+<button mat-raised-button color="basic" (click)="refresh()">Refresh</button>
+<div *ngFor="let videoResource of videoResources; let i=index">
+  <div [formGroupName]="i" class="receipt">
+    <div># {{videoResource.name}}</div>
+    <button mat-raised-button color="primary" (click)="open(videoResource.content)">Open</button>
+  </div>
+</div>

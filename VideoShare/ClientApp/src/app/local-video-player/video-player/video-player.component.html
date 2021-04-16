@@ -1,0 +1,16 @@
+<div class="video">
+  <video controls (click)="toggleVideo()" #videoPlayer width="100%" height="100%" preload="none">
+    <source src="assets/videos/movie.mp4" type="video/mp4" />
+    Browser not supported
+  </video>
+  <button mat-raised-button color="primary" (click)="playPause()">Play/Pause</button>
+  <button mat-raised-button color="primary" (click)="restart()">Restart</button>
+  <button mat-raised-button color="primary" (click)="skip(-10)">Rewind</button>
+  <button mat-raised-button color="primary" (click)="skip(10)">Fastforward</button>
+  <button mat-raised-button color="primary" (click)="fullScreen()">FullScreen</button>
+  <button mat-raised-button color="primary" (click)="makeBig()">Big</button>
+  <button mat-raised-button color="primary" (click)="makeSmall()">Small</button>
+  <button mat-raised-button color="primary" (click)="makeNormal()">Normal</button>
+</div>
+
+<button mat-raised-button color="basic"  (click)="stepBack()">Back</button>

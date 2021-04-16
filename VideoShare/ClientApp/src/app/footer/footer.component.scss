@@ -1,0 +1,30 @@
+@import 'theme';
+
+:host {
+  @extend %app-wide-element;
+
+  text-align: center;
+}
+
+.content {
+  margin-top: map-get($app-metrics, element-height);
+  border-bottom: 1px solid map-get($app-colors, border);
+  border-top: 1px solid map-get($app-colors, border);
+  display: flex;
+  flex-direction: column;
+
+  * {
+    line-height: 24px;
+  }
+
+  a {
+    margin: map-get($app-metrics, element-spacing) / 2 0;
+    color: map-get($app-colors, text);
+    text-decoration: none;
+  }
+}
+
+.content,
+.currentYearStyle {
+  padding: map-get($app-metrics, element-spacing) 0;
+}
