@@ -1,0 +1,14 @@
+<mat-icon svgIcon="error"></mat-icon>
+<h1>Error</h1>
+<span>Video error</span>
+<div *ngIf="!videoStreamStatus" fxLayout="row">
+  <span>Video input error</span>
+</div>
+<div fxLayout="row">
+  <mat-divider></mat-divider>
+</div>
+<div fxLayout="row">
+  <button mat-button class="restart" (click)="restart()">
+    <mat-icon class="mat-icon-restart" svgIcon="rescan"></mat-icon><span>Return</span>
+  </button>
+</div>

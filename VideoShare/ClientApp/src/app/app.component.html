@@ -1,0 +1,13 @@
+<div class="loading-indicator" *ngIf="isLoading$ | async">
+  <mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner>
+</div>
+<div class="app-container">
+  <vc-header *ngIf="!isFullScreen"></vc-header>
+  <div class="app-wrapper" #wrapper>
+    <div class="app-content" [ngClass]="{'full-screen': isFullScreen}">
+      <router-outlet></router-outlet>
+      <vc-footer *ngIf="!isFullScreen"></vc-footer>
+    </div>
+  </div>
+</div>
+

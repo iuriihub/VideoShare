@@ -1,0 +1,11 @@
+@import 'theme';
+
+.app-scan-preview {
+  height: auto;
+  width: 100%;
+}
+
+.mat-raised-button {
+  @extend %app-wide-element;
+  margin-bottom: map-get($app-metrics, element-spacing);
+}
