@@ -7,6 +7,6 @@ namespace VideoShare.Infrastructure.Interfaces
 {
     public interface IVideoShareService
     {
-        Task<HttpResponseDto<List<FileContentDto>>> GetListOfFiles();
+        Task<HttpResponseDto<List<FileContentDto>>> GetVideoResources();
     }
 }

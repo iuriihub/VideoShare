@@ -19,12 +19,12 @@ namespace VideoShare.Services
         /// Get host settings
         /// </summary>
         /// <returns></returns>
-        public async Task<HttpResponseDto<List<FileContentDto>>> GetListOfFiles()
+        public async Task<HttpResponseDto<List<FileContentDto>>> GetVideoResources()
         {
             HttpResponseDto<List<FileContentDto>> response;
 
-            var files = Directory.GetFiles(@"d:\Dev\VideoShare\VideoShare\VideoShare\ClientApp\dist\assets\videos\");
-            var fileContents = files.ToList().Select(o => Path.GetFileName(o)).Select(o => new FileContentDto() { FileName = o });
+            var files = Directory.GetFiles(@"d:\Dev\VideoShareRepo\VideoShare\VideoShare\ClientApp\dist\assets\videos");
+            var fileContents = files.ToList().Select(o => Path.GetFileName(o)).Select(o => new FileContentDto() { Name = o, Content = o });
 
             response = new HttpResponseDto<List<FileContentDto>>
             {

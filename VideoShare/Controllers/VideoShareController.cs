@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -12,8 +13,9 @@ namespace VideoShare.Controllers
     {
         private readonly IVideoShareService _videoShareService;
 
-        public VideoShareController()
+        public VideoShareController(IVideoShareService videoShareService)
         {
+            _videoShareService = videoShareService ?? throw new ArgumentNullException(nameof(videoShareService));
         }
 
         /// <summary>
@@ -24,7 +26,7 @@ namespace VideoShare.Controllers
         [HttpGet("video-resources", Name = "GetVideoResources")]
         public async Task<IActionResult> GetVideoResources()
         {
-            var response = await _videoShareService.GetListOfFiles();
+            var response = await _videoShareService.GetVideoResources();
 
             if (response.Content != null)
             {

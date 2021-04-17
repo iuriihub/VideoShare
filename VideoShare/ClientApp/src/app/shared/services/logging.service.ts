@@ -15,7 +15,7 @@ export class LoggingService {
     this.logger.setOptions({
       appenders: [
         // TODO: Implement logger parameters
-        logAppender.setOptions({ url: 'http://localhost:4000', maxBatchSize: 20 })
+        // logAppender.setOptions({ url: 'http://localhost:4000', maxBatchSize: 20 })
       ]
     });
   }

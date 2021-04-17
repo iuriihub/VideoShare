@@ -4,7 +4,10 @@ namespace VideoShare.Infrastructure.Dtos.FileContent
 {
     public class FileContentDto
     {
-        [JsonProperty("fileName")]
-        public string FileName { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("content")]
+        public string Content { get; set; }
     }
 }

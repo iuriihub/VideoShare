@@ -10,7 +10,7 @@ import { ViewChild, ElementRef } from '@angular/core';
 export class VideoPlayerComponent implements OnInit{
   @ViewChild("videoPlayer", { static: false }) videoplayer: ElementRef;
   //private readonly unsubscribe: Subject<void> = new Subject<void>();
-  private fileName: string;
+  private videoResource: string;
 
   constructor(
     private readonly router: Router,
@@ -18,8 +18,8 @@ export class VideoPlayerComponent implements OnInit{
     ) { }
 
   ngOnInit(): void {
-    this.localStorageService.fileName$.subscribe(imageStore => {
-      this.fileName = imageStore;
+    this.localStorageService.fileName$.subscribe(videoResource => {
+      this.videoResource = videoResource;
     });
   }
 
@@ -28,7 +28,7 @@ export class VideoPlayerComponent implements OnInit{
   }
 
   playPause(): void {
-    this.videoplayer.nativeElement.src = this.fileName;
+    this.videoplayer.nativeElement.src = "assets/videos/" + this.videoResource;
     if (this.videoplayer.nativeElement.paused) this.videoplayer.nativeElement.play();
     else this.videoplayer.nativeElement.pause();
   }
