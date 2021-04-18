@@ -12,6 +12,7 @@ using VideoShare.Infrastructure.Interfaces;
 using VideoShare.Infrastructure.Logging;
 using VideoShare.Infrastructure.Settings;
 using VideoShare.Middlewares;
+using VideoShare.Services;
 
 namespace VideoShare
 {
@@ -75,10 +76,12 @@ namespace VideoShare
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IProxySettings>(_proxySettings);
+           
             services.AddCorrelationId();
             services.AddLogging().AddRouting(options => { options.LowercaseUrls = true; });
             services.AddOptions();
+            services.AddTransient<IVideoShareService, VideoShareService>();
+            services.AddSingleton<IProxySettings>(_proxySettings);
             services.AddSingleton(typeof(IExtendedLogger<>), typeof(ExtendedLogger<>));
             services.AddSpaStaticFiles(configuration =>
             {
