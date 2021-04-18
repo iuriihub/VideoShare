@@ -23,7 +23,7 @@ namespace VideoShare.Services
         {
             HttpResponseDto<List<FileContentDto>> response;
 
-            var files = Directory.GetFiles(@"d:\Dev\VideoShareRepo\VideoShare\VideoShare\ClientApp\dist\assets\videos");
+            var files = Directory.GetFiles(@"d:\Dev\VideoShare\VideoShare\VideoShare\ClientApp\dist\assets\videos");
             var fileContents = files.ToList().Select(o => Path.GetFileName(o)).Select(o => new FileContentDto() { Name = o, Content = o });
 
             response = new HttpResponseDto<List<FileContentDto>>
