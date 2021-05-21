@@ -19,10 +19,12 @@ namespace VideoShare
     public class Startup
     {
         private readonly ProxySettings _proxySettings = new ProxySettings();
+        private readonly VideoShareServiceSettings _videoShareServiceSettings = new VideoShareServiceSettings();
 
         public Startup(IConfiguration configuration)
         {
             configuration.BindConfigurationAndValidate(_proxySettings);
+            configuration.BindConfigurationAndValidate(_videoShareServiceSettings);
             Configuration = configuration;
         }
 
@@ -81,7 +83,9 @@ namespace VideoShare
             services.AddLogging().AddRouting(options => { options.LowercaseUrls = true; });
             services.AddOptions();
             services.AddTransient<IVideoShareService, VideoShareService>();
+            services.AddTransient<IVideoShareService, VideoShareService>();
             services.AddSingleton<IProxySettings>(_proxySettings);
+            services.AddSingleton<IVideoShareServiceSettings>(_videoShareServiceSettings);
             services.AddSingleton(typeof(IExtendedLogger<>), typeof(ExtendedLogger<>));
             services.AddSpaStaticFiles(configuration =>
             {

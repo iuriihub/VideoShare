@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -11,8 +12,12 @@ namespace VideoShare.Services
 {
     public class VideoShareService : IVideoShareService
     {
-        public VideoShareService()
-        { 
+
+        private readonly IVideoShareServiceSettings _videoShareServiceSettings;
+
+        public VideoShareService(IVideoShareServiceSettings videoShareServiceSettings)
+        {
+            _videoShareServiceSettings = videoShareServiceSettings ?? throw new ArgumentNullException(nameof(videoShareServiceSettings));
         }
 
         /// <summary>
@@ -23,7 +28,7 @@ namespace VideoShare.Services
         {
             HttpResponseDto<List<FileContentDto>> response;
 
-            var files = Directory.GetFiles(@"d:\Dev\VideoShare\VideoShare\VideoShare\ClientApp\dist\assets\videos");
+            var files = Directory.GetFiles(_videoShareServiceSettings.VideoShareResourceBasePath);
             var fileContents = files.ToList().Select(o => Path.GetFileName(o)).Select(o => new FileContentDto() { Name = o, Content = o });
 
             response = new HttpResponseDto<List<FileContentDto>>

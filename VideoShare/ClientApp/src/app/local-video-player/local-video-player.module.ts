@@ -11,6 +11,7 @@ import { SharedModule } from '../shared';
 import { LocalVideoPlayerRoutingModule } from './local-video-player-routing.module';
 import { VideoPlayerComponent } from './video-player/video-player.component';
 import { VideoListComponent } from './video-list/video-list.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { VideoListComponent } from './video-list/video-list.component';
     ReactiveFormsModule,
     MatButtonModule,
     MatInputModule,
+    MatTableModule,
     CommonModule,
     SharedModule,
     LocalVideoPlayerRoutingModule

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTableModule } from '@angular/material/table';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FooterModule } from './footer';
@@ -22,7 +23,8 @@ import { baseUrl } from './shared';
     AppRoutingModule,
     SharedModule,
     ErrorModule,
-    LocalVideoPlayerModule
+    LocalVideoPlayerModule,
+    MatTableModule
   ],
   providers: [
     { provide: baseUrl, useValue: 'api/v1/video-share' },

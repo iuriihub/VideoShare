@@ -12,7 +12,8 @@ export class VideoListComponent implements OnInit {
   private readonly unsubscribe: Subject<void> = new Subject<void>();
   videoResources: VideoResource[];
   serviceRequest: ServiceRequest;
-     
+  displayedColumns: string[] = ['name', 'openAction'];
+
   constructor(
     private readonly localStorageService: LocalStorageService,
     private readonly videoShareService: VideoShareService,
@@ -34,7 +35,14 @@ export class VideoListComponent implements OnInit {
 
   getVideoResources(): void {
     this.videoShareService.getVideoResources().pipe(filter(x => x), takeUntil(this.unsubscribe)).subscribe(
-      videoResources => this.videoResources = videoResources
+      videoResources => {
+        this.videoResources = videoResources;
+      }
     );
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.videoResources = this.videoResources.filter(o => o.name.toLowerCase().includes(filterValue.trim().toLowerCase()));
   }
 }
