@@ -6,14 +6,18 @@
   <input matInput (keyup)="applyFilter($event)" placeholder="File Name" #input>
 </mat-form-field>
 
-<table mat-table [dataSource]="videoResources" class="mat-elevation-z8">
+<table #videoResourcesList mat-table [dataSource]="videoResources" class="mat-elevation-z8" width=100%>
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> File Name </th>
-    <td mat-cell *matCellDef="let videoResource"> {{videoResource.name}} </td>
+    <th width=90% mat-header-cell *matHeaderCellDef> File Name </th>
+    <td mat-cell *matCellDef="let videoResource">
+      <span id="ellipsis-ex" class="d-inline-block text-truncate" style="max-width: 80%;">
+        {{videoResource.name}}
+      </span>
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="openAction">
-    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <th width=10% mat-header-cell *matHeaderCellDef> Action </th>
     <td mat-cell *matCellDef="let videoResource">
       <button mat-raised-button color="primary" (click)="open(videoResource.content)">Open</button>
     </td>

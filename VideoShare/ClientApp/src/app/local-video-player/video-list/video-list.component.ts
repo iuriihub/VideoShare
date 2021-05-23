@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { LocalStorageService, VideoResource, AppRoutes, ServiceRequest, VideoShareService } from "src/app/shared";
 import { Router } from "@angular/router";
 import { Subject } from "rxjs";
@@ -10,6 +10,7 @@ import { filter, takeUntil } from "rxjs/operators";
 })
 export class VideoListComponent implements OnInit {
   private readonly unsubscribe: Subject<void> = new Subject<void>();
+  @ViewChild('videoResourcesList') videoResourcesList: ElementRef;
   videoResources: VideoResource[];
   serviceRequest: ServiceRequest;
   displayedColumns: string[] = ['name', 'openAction'];
@@ -37,6 +38,7 @@ export class VideoListComponent implements OnInit {
     this.videoShareService.getVideoResources().pipe(filter(x => x), takeUntil(this.unsubscribe)).subscribe(
       videoResources => {
         this.videoResources = videoResources;
+        this.videoResourcesList.nativeElement.renderRows();
       }
     );
   }
@@ -44,5 +46,6 @@ export class VideoListComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.videoResources = this.videoResources.filter(o => o.name.toLowerCase().includes(filterValue.trim().toLowerCase()));
+    this.videoResourcesList.nativeElement.renderRows();
   }
 }
